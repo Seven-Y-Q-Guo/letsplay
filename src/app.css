@@ -1,0 +1,235 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  --pc-transparent: transparent;
+  --pc-static_white: #fff;
+  --pc-bg_1: #101e2a;
+  --pc-bg_2: #15222e;
+  --pc-bg_3: #425e7c;
+  --pc-text_1: #f6f6f6;
+  --pc-text_2: #d1d1d1;
+  --pc-text_3: #93a3bc;
+  --pc-border_1: #213040;
+  --pc-border_2: #18222d;
+  --pc-border_3: #425e7c;
+  --pc-primary_1: #72a24d;
+  --pc-primary_2: #58a51b;
+  --pc-primary_3: #c2e1eb;
+  --pc-danger_1: #eb5757;
+  --pc-danger_2: #f37575;
+  --pc-warning_1: #bd7700;
+  --pc-warning_2: #ebe3c2;
+  --pc-primary_gr: linear-gradient(180deg,#95c000,#39a300 72.5%);
+  --pc-layouttoolsoverlapshadow: -4px 0px 3px -3px rgba(0,0,0,.5);
+  --pc-popovershadow: 0 5px 40px rgba(0,0,0,.16);
+  --pc-loadingmaskbackgroundcolor: hsla(0,0%,9%,.7);
+  --pc-fileborder: none;
+  --pc-consolekeytextcolor: #e06c75;
+  --pc-consoleitemtextcolor: #afafaf;
+  --pc-consoleinfotextcolor: #0a85bc;
+  --pc-consolewarntextcolor: #bd7700;
+  --pc-consoleerrortextcolor: #f58771;
+  --pc-consoletypenulltextcolor: #d19a66;
+  --pc-consoletypestringtextcolor: #98c379;
+  --pc-consoletypenumbertextcolor: #d19a66;
+  --pc-consolewarnbgcolor: #26290c;
+  --pc-consoleerrorbgcolor: #30120f;
+  --el-color-primary: #72a24d;
+  --el-color-primary-light-3: #557a43;
+  --el-color-primary-light-5: #41603c;
+  --el-color-primary-light-7: #2d4635;
+  --el-color-primary-light-8: #243831;
+  --el-color-primary-light-9: #1a2b2e;
+  --el-color-primary-dark-2: #5e8846;
+  --el-color-success: #58a51b;
+  --el-color-success-light-3: #427d20;
+  --el-color-success-light-5: #346223;
+  --el-color-success-light-7: #264726;
+  --el-color-success-light-8: #1e3927;
+  --el-color-success-light-9: #172c29;
+  --el-color-success-dark-2: #4a8a1e;
+  --el-color-warning: #bd7700;
+  --el-color-warning-light-3: #895c0d;
+  --el-color-warning-light-5: #674b15;
+  --el-color-warning-light-7: #44391d;
+  --el-color-warning-light-8: #333022;
+  --el-color-warning-light-9: #212726;
+  --el-color-warning-dark-2: #9a6508;
+  --el-color-danger: #eb5757;
+  --el-color-danger-light-3: #a9464a;
+  --el-color-danger-light-5: #7e3b41;
+  --el-color-danger-light-7: #522f38;
+  --el-color-danger-light-8: #3c2933;
+  --el-color-danger-light-9: #26242f;
+  --el-color-danger-dark-2: #bf4c4e;
+  --el-color-error: #eb5757;
+  --el-color-error-light-3: #a9464a;
+  --el-color-error-light-5: #7e3b41;
+  --el-color-error-light-7: #522f38;
+  --el-color-error-light-8: #3c2933;
+  --el-color-error-light-9: #26242f;
+  --el-color-error-dark-2: #bf4c4e;
+  --el-color-info: #93a3bc;
+  --el-color-info-light-3: #6c7b90;
+  --el-color-info-light-5: #526173;
+  --el-color-info-light-7: #374656;
+  --el-color-info-light-8: #2a3947;
+  --el-color-info-light-9: #1d2b39;
+  --el-color-info-dark-2: #79889f;
+  --el-box-shadow: 0px 12px 32px 4px rgba(0,0,0,.04),0px 8px 20px rgba(0,0,0,.08);
+  --el-box-shadow-light: 0px 0px 12px rgba(0,0,0,.12);
+  --el-box-shadow-lighter: 0px 0px 6px rgba(0,0,0,.12);
+  --el-box-shadow-dark: 0px 16px 48px 16px rgba(0,0,0,.08),0px 12px 32px rgba(0,0,0,.12),0px 8px 16px -8px rgba(0,0,0,.16);
+  --el-bg-color-page: #101e2a;
+  --el-bg-color: #101e2a;
+  --el-bg-color-overlay: #15222e;
+  --el-text-color-disabled: hsla(0,0%,96%,.4);
+  --el-text-color-placeholder: hsla(0,0%,96%,.55);
+  --el-text-color-secondary: hsla(0,0%,96%,.65);
+  --el-text-color-regular: #d1d1d1;
+  --el-text-color-primary: #f6f6f6;
+  --el-border-color-extra-light: rgba(66,94,124,.2);
+  --el-border-color-lighter: rgba(66,94,124,.4);
+  --el-border-color-light: rgba(66,94,124,.5);
+  --el-border-color: rgba(66,94,124,.9);
+  --el-border-color-dark: rgba(54,76,101,.7);
+  --el-border-color-darker: #425e7c;
+  --el-fill-color-extra-light: #101e2a;
+  --el-fill-color-lighter: #101e2a;
+  --el-fill-color-light: rgba(66,94,124,.25);
+  --el-fill-color: #101e2a;
+  --el-fill-color-dark: #101e2a;
+  --el-fill-color-darker: #101e2a;
+  --el-fill-color-blank: transparent;
+  --el-mask-color: rgba(21,34,46,.8);
+  --el-mask-color-extra-light: rgba(21,34,46,.3);
+  --el-font-size-base: 14px;
+  --el-component-size-large: 36px;
+  --el-component-size: 28px;
+  --el-component-size-small: 22px;
+  --el-border-radius-base: 4px;
+  --el-border-radius-small: 4px;
+}
+
+html,
+body,
+div {
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  width: 100%;
+}
+
+body {
+  background-color: #16222e;
+}
+
+.markdown {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+          'Open Sans', 'Helvetica Neue';
+}
+
+.markdown h1 {
+  color: #d1d1d1;
+}
+
+.markdown p {
+  color: aliceblue;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #333;
+    background: #f8f8f8
+}
+
+.hljs-comment,.hljs-quote {
+    color: #998;
+    font-style: italic
+}
+
+.hljs-keyword,.hljs-selector-tag,.hljs-subst {
+    color: #333;
+    font-weight: bold
+}
+
+.hljs-number,.hljs-literal,.hljs-variable,.hljs-template-variable,.hljs-tag .hljs-attr {
+    color: #008080
+}
+
+.hljs-string,.hljs-doctag {
+    color: #d14
+}
+
+.hljs-title,.hljs-section,.hljs-selector-id {
+    color: #900;
+    font-weight: bold
+}
+
+.hljs-subst {
+    font-weight: normal
+}
+
+.hljs-type,.hljs-class .hljs-title {
+    color: #458;
+    font-weight: bold
+}
+
+.hljs-tag,.hljs-name,.hljs-attribute {
+    color: #000080;
+    font-weight: normal
+}
+
+.hljs-regexp,.hljs-link {
+    color: #009926
+}
+
+.hljs-symbol,.hljs-bullet {
+    color: #990073
+}
+
+.hljs-built_in,.hljs-builtin-name {
+    color: #0086b3
+}
+
+.hljs-meta {
+    color: #999;
+    font-weight: bold
+}
+
+.hljs-deletion {
+    background: #fdd
+}
+
+.hljs-addition {
+    background: #dfd
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+.hljs-strong {
+    font-weight: bold
+}
+
+.markdown pre {
+  background-color: #f8f8f8;
+  padding: 0.5em;
+  display: block;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
