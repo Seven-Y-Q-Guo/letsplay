@@ -79,11 +79,18 @@
     <script type="text/javascript">
       mocha.setup('bdd');
       mocha.checkLeaks();
-      it('should add to numbers from an es module', () => {
-        chai.assert.deepEqual([2, 6].customMap(item => item * 2), [4, 12]);
+      it('chain function should work', () => {
+        function add(x) {
+        	return x + 10;	
+        }
+
+        function mult(x) {
+        	return x * 30;
+        }
+        chai.assert.equal(chain(2, [add, mult]), 360);
       });
       mocha.run();
     </script>
-    <script type="text/javascript" src="./message.js"></script>
+    <script src="./message.js"></script>
   </body>
 </html>

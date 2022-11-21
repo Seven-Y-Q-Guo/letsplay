@@ -1,10 +1,18 @@
-# Array.prototype.map()
+# Write a generic function chainer
 
-The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
+Write a generic function chainer that takes a starting value, and an array of functions to execute on it (array of symbols for Ruby).
+
+The input for each function is the output of the previous function (except the first function, which takes the starting value as its input). Return the final value after execution is complete.
 
 ```javascript
-function test() {
-  return 123;
+function add(num) {
+  return num + 1;
 }
-console.log(1);
+
+function mult(num) {
+  return num * 30;
+}
+
+chain(2, [add, mult]);
+// returns 90;
 ```

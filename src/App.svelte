@@ -25,8 +25,8 @@
   onMount(() => {
     // window.editor = monaco.editor;
     window.editor = monaco.editor.create(editor, {
-      value: `Array.prototype.customMap = function() {
-    // code here
+      value: `function chain(input, fs) {
+  // implement the "chain" function
 }`,
       autoIndent: "brackets",
       formatOnType: !1,
