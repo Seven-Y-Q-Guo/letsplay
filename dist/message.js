@@ -68,6 +68,12 @@ window.addEventListener('message', function (e) {
           #mocha .test pre {
             font-size: 14px;
           }
+          
+          @media (prefers-color-scheme: light) {
+            #mocha-stats .progress {
+              display: none;
+            }
+          }
         </style>
       </head>
       <body>
