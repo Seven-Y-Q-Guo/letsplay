@@ -12,7 +12,7 @@
   let ut = '';
   
   onMount(async () => {
-    const { js, readme, ut: unitTest } = await import(path);
+    const { js, readme, ut: unitTest } = await import('../courses/js/reducer');
     
     string = md.render(readme);
     ut = unitTest;
