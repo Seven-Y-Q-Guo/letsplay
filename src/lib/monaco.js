@@ -28,3 +28,26 @@ monaco.editor.defineTheme('blue', theme);
 monaco.editor.setTheme('blue');
 
 export default monaco;
+
+export const option = {
+  autoIndent: "brackets",
+  formatOnType: !1,
+  formatOnPaste: !1,
+  fontFamily: "Menlo, Monaco, source-code-pro, Ubuntu Mono, DejaVu sans mono, Consolas, monospace",
+  fontSize: 15,
+  automaticLayout: !0,
+  overviewRulerBorder: !1,
+  hideCursorInOverviewRuler: !1,
+  overviewRulerLanes: 2,
+  lineNumbersMinChars: 0,
+  scrollbar: {
+    "useShadows": true,
+    "verticalHasArrows": false,
+    "horizontalHasArrows": false,
+    "vertical": "visible",
+    "horizontal": "visible",
+    "verticalScrollbarSize": 8,
+    "horizontalScrollbarSize": 8
+  },
+  language: 'javascript'
+};
