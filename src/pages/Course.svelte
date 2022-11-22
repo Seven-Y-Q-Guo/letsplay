@@ -3,7 +3,7 @@
 
   import md from '../lib/markdown.js';
   import monaco, { option } from '../lib/monaco.js';
-  import path from '../courses/path.js';
+  import map from '../courses/map.js';
 
   let editor;
   let iframe;
@@ -12,7 +12,10 @@
   let ut = '';
   
   onMount(async () => {
-    const { js, readme, ut: unitTest } = await import('../courses/js/reducer');
+    const url = window.location.search;
+    const searchParams = new URLSearchParams(url);
+    
+    const { js, readme, ut: unitTest } = await map[searchParams.get('course')]();
     
     string = md.render(readme);
     ut = unitTest;
