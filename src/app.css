@@ -233,3 +233,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+.markdown h2 a {
+  color: #a5c3ef;
+}

@@ -3,23 +3,30 @@
 
   import md from '../lib/markdown.js';
   import monaco, { option } from '../lib/monaco.js';
-  import { js, readme } from '../courses/js/chain';
+  import path from '../courses/path.js';
 
   let editor;
   let iframe;
   let isShowReport = false;
-  let string = md.render(readme);
+  let string = '';
+  let ut = '';
   
-  onMount(() => {
+  onMount(async () => {
+    const { js, readme, ut: unitTest } = await import(path);
+    
+    string = md.render(readme);
+    ut = unitTest;
     window.editor = monaco.editor.create(editor, {
       value: js,
       ...option
     });
+    
 	});
   
   const handleClick = () => {
     iframe.contentWindow.postMessage(JSON.stringify({
-      js: window.editor.getValue()
+      js: window.editor.getValue(),
+      ut
     }), '*');
     
     setTimeout(() => {

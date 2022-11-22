@@ -1,7 +1,7 @@
 // window.parent.postMessage('update', '*');
 window.addEventListener('message', function (e) {
-  const { js } = JSON.parse(e.data);
-  
+  const { js, ut } = JSON.parse(e.data);
+  console.log(ut);
   document.open();
   document.write(`
     <!DOCTYPE html>
@@ -83,19 +83,7 @@ window.addEventListener('message', function (e) {
         <script src="https://unpkg.com/mocha/mocha.js"></script>
         <script type="text/javascript">${js}</script>
         <script type="text/javascript">
-          mocha.setup('bdd');
-          mocha.checkLeaks();
-          it('chain function should work', () => {
-            function add(x) {
-            	return x + 10;	
-            }
-
-            function mult(x) {
-            	return x * 30;
-            }
-            chai.assert.equal(chain(2, [add, mult]), 360);
-          });
-          mocha.run();
+          ${ut}
         </script>
         <script type="text/javascript" src="./message.js"></script>
       </body>
