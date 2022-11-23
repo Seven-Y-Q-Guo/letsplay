@@ -1,7 +1,7 @@
 // window.parent.postMessage('update', '*');
 window.addEventListener('message', function (e) {
   const { js, ut } = JSON.parse(e.data);
-  console.log(ut);
+
   document.open();
   document.write(`
     <!DOCTYPE html>
