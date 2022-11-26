@@ -10,8 +10,9 @@
   let isShowReport = false;
   let string = '';
   let ut = '';
-  
+  console.log(123);
   onMount(async () => {
+    
     const url = window.location.search;
     const searchParams = new URLSearchParams(url);
     

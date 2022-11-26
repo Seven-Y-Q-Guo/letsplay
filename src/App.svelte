@@ -4,9 +4,18 @@
   
 </script>
 
-<main>
-  <Course />
-</main>
+<Router>
+  <nav>
+    <Link to="/">Home</Link>
+    <Link to="about">About</Link>
+    <Link to="profile">Profile</Link>
+  </nav>
+  <main>
+    <Route path="/">
+      <Course />
+    </Route>
+  </main>
+</Router>
 
 <style>
   
