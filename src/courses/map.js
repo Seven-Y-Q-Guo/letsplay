@@ -6,6 +6,15 @@ const courses = {
       },
       'map': {
         'write your own': async () => await import('../courses/js/map')
+      },
+      'filter': {
+        'write your own': async () => await import('../courses/js/filter')
+      },
+      'some': {
+        'write your own': async () => await import('../courses/js/some')
+      },
+      'every': {
+        'write your own': async () => await import('../courses/js/every')
       }
     },
     'Algorithm': {
