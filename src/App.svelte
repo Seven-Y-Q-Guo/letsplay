@@ -1,22 +1,18 @@
 <script>
   import { Router, Route, Link } from "svelte-navigator";
+
   import Course from './pages/Course.svelte';
+  import Home from './pages/Home.svelte';
   
 </script>
 
-<Router>
-  <nav>
-    <Link to="/">Home</Link>
-    <Link to="about">About</Link>
-    <Link to="profile">Profile</Link>
-  </nav>
+<Router basepath={__APP_ENV__.basepath}>
   <main>
-    <Route path="/">
-      <Course />
+    <Route path=":courseId" let:params>
+      <Course id="{params.courseId}" />
+    </Route>
+    <Route path="/" >
+      <Home />
     </Route>
   </main>
 </Router>
-
-<style>
-  
-</style>

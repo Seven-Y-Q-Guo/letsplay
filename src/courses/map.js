@@ -1,7 +1,17 @@
 const courses = {
-  1: async () => await import('../courses/js/chain'),
-  2: async () => await import('../courses/js/reduce'),
-  3: async () => await import('../courses/js/map'),
+  'JavaScript': {
+    'Array': {
+      'reduce': {
+        'write your own': async () => await import('../courses/js/reduce')
+      },
+      'map': {
+        'write your own': async () => await import('../courses/js/map')
+      }
+    },
+    'Algorithm': {
+      'chain': async () => await import('../courses/js/chain')
+    }
+  }
 };
 
 export default courses;

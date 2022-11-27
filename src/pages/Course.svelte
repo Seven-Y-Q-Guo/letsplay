@@ -1,22 +1,22 @@
 <script>
-  import { beforeUpdate, afterUpdate, onMount } from 'svelte';
+  import { onMount } from 'svelte';
+  import { get } from 'lodash';
+  import { Link } from "svelte-navigator";
 
   import md from '../lib/markdown.js';
   import monaco, { option } from '../lib/monaco.js';
   import map from '../courses/map.js';
+  
+  export let id;
 
   let editor;
   let iframe;
   let isShowReport = false;
   let string = '';
   let ut = '';
-  console.log(123);
-  onMount(async () => {
-    
-    const url = window.location.search;
-    const searchParams = new URLSearchParams(url);
-    
-    const { js, readme, ut: unitTest } = await map[searchParams.get('course')]();
+
+  onMount(async () => {    
+    const { js, readme, ut: unitTest } = await get(map, id.split('_').join('.'))();
     
     string = md.render(readme);
     ut = unitTest;
@@ -50,7 +50,8 @@
     </div>
   </div>
   <div class="footer">
-    <button on:click={handleClick} type="button" name="button">RUN</button>
+    <Link to="/">Courses</Link>
+    <div class="editor-actions"><button on:click={handleClick} type="button" name="button">RUN</button></div>
   </div>
 </div>
 
@@ -105,10 +106,15 @@
     height: 48px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 0 30px;
     border-top: 1px solid;
     border-color: var(--pc-border_1);
     background-color: var(--pc-bg_2);
+    box-sizing: border-box;
+  }
+  
+  .editor-actions {
+    width: 50vw;
   }
   
   button {
