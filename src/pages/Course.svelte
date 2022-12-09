@@ -2,10 +2,12 @@
   import { onMount } from 'svelte';
   import { get } from 'lodash';
   import { Link } from "svelte-navigator";
+  import uniqid from 'uniqid';
 
   import md from '../lib/markdown.js';
   import monaco, { option } from '../lib/monaco.js';
   import map from '../courses/map.js';
+  import { db } from '../db.js'; 
   
   export let id;
 
@@ -17,12 +19,33 @@
 
   onMount(async () => {    
     const { js, readme, ut: unitTest } = await get(map, id.split('_').join('.'))();
+    const { id: uid, content } = await db.practices.get({
+      course: id
+    }) || {};
+    
+    // console.log();
     
     string = md.render(readme);
     ut = unitTest;
     window.editor = monaco.editor.create(editor, {
-      value: js,
+      value: content || js,
       ...option
+    });
+    
+    window.editor.getModel().onDidChangeContent(async () => {
+      if (content) {
+        db.practices.put({
+          id: uid,
+          course: id,
+          content: window.editor.getValue()
+        });
+      } else {
+        db.practices.add({
+          id: uniqid(),
+          course: id,
+          content: window.editor.getValue()
+        });
+      }
     });
     
 	});

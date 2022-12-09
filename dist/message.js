@@ -1,4 +1,3 @@
-// window.parent.postMessage('update', '*');
 window.addEventListener('message', function (e) {
   const { js, ut } = JSON.parse(e.data);
 

@@ -14,10 +14,12 @@
     "vite": "^3.2.3"
   },
   "dependencies": {
+    "dexie": "^3.2.2",
     "highlight.js": "^11.6.0",
     "lodash": "^4.17.21",
     "markdown-it": "^13.0.1",
     "monaco-editor": "^0.34.1",
-    "svelte-navigator": "^3.2.2"
+    "svelte-navigator": "^3.2.2",
+    "uniqid": "^5.4.0"
   }
 }
