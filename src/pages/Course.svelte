@@ -19,8 +19,8 @@
 
   onMount(async () => {    
     const { js, readme, ut: unitTest } = await get(map, id.split('_').join('.'))();
-    const { id: uid, content } = await db.practices.get({
-      course: id
+    const { content } = await db.practices.get({
+      id
     }) || {};
     
     // console.log();
@@ -35,14 +35,12 @@
     window.editor.getModel().onDidChangeContent(async () => {
       if (content) {
         db.practices.put({
-          id: uid,
-          course: id,
+          id,
           content: window.editor.getValue()
         });
       } else {
         db.practices.add({
-          id: uniqid(),
-          course: id,
+          id,
           content: window.editor.getValue()
         });
       }
