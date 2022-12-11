@@ -24,14 +24,9 @@ const sumWithInitial = array1.reduce(
 console.log(sumWithInitial);
 // expected output: 10
 \`\`\`
-`,t=`mocha.setup('bdd');
-mocha.checkLeaks();
-
-it('chain function should work', () => {
+`,t=`it('chain function should work', () => {
   chai.assert.equal([1, 3, 4].customReduce((acc, cur) => {
     return acc + cur;
   }), 8);
 });
-
-mocha.run();
 `;export{e as js,n as readme,t as ut};

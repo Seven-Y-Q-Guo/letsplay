@@ -15,10 +15,7 @@ const result = words.filter(word => word.length > 6);
 console.log(result);
 // expected output: Array ["exuberant", "destruction", "present"]
 \`\`\`
-`,n=`mocha.setup('bdd');
-mocha.checkLeaks();
-
-it('customFilter function should work', () => {
+`,n=`it('customFilter function should work', () => {
   function isBigEnough(value) {
     return value >= 10;
   }
@@ -26,6 +23,4 @@ it('customFilter function should work', () => {
   const filtered = [12, 5, 8, 130, 44].customFilter(isBigEnough);
   chai.assert.deepEqual(filtered, [12, 130, 44]);
 });
-
-mocha.run();
 `;export{e as js,t as readme,n as ut};

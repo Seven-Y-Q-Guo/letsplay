@@ -16,16 +16,11 @@ const even = (element) => element % 2 === 0;
 console.log(array.some(even));
 // expected output: true
 \`\`\`
-`,t=`mocha.setup('bdd');
-mocha.checkLeaks();
-
-it('chain function should work', () => {
+`,t=`it('chain function should work', () => {
   function isBiggerThan10(element, index, array) {
     return element > 10;
   }
 
   chai.assert.equal([12, 5, 8, 1, 4].customSome(isBiggerThan10), true);
 });
-
-mocha.run();
 `;export{e as js,n as readme,t as ut};
