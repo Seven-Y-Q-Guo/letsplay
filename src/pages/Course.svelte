@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import { get } from 'lodash';
   import { Link } from "svelte-navigator";
 
@@ -15,6 +15,23 @@
   let isShowReport = false;
   let string = '';
   let ut = '';
+  const handleMsg = async (e) => {
+    if (e.data === 'success') {
+      await db.practices.put({
+        id,
+        content: window.editor.getValue(),
+        status: 0
+      });
+    }
+    
+    if (e.data === 'error') {
+      await db.practices.put({
+        id,
+        content: window.editor.getValue(),
+        status: 1
+      });
+    }
+  };
 
   onMount(async () => {
     const { js, readme, ut: unitTest } = await get(map, id.split('_').join('.'))();
@@ -22,6 +39,13 @@
       id
     }) || {};
     
+    if (!content) {
+      await db.practices.add({
+        id,
+        content: js,
+        status: 2
+      });
+    }
     string = md.render(readme);
     ut = unitTest;
     window.editor = monaco.editor.create(editor, {
@@ -30,46 +54,20 @@
     });
     
     window.editor.getModel().onDidChangeContent(async () => {
-      if (content) {
-        await db.practices.put({
-          id,
-          content: window.editor.getValue(),
-          status: 2
-        });
-      } else {
-        await db.practices.add({
-          id,
-          content: window.editor.getValue(),
-          status: 2
-        });
-      }
+      await db.practices.put({
+        id,
+        content: window.editor.getValue(),
+        status: 2
+      });
     });
     
-    window.addEventListener('message', async (e) => {
-      if (content) {
-        if (e.data === 'success') {
-          await db.practices.put({
-            id,
-            content: window.editor.getValue(),
-            status: 0
-          });
-        } else {
-          await db.practices.put({
-            id,
-            content: window.editor.getValue(),
-            status: 1
-          });
-        }
-      } else {
-        await db.practices.add({
-          id,
-          content: window.editor.getValue(),
-          status: 2
-        });
-      }
-    });
+    window.addEventListener('message', handleMsg);
     
 	});
+  
+  onDestroy(() => {
+    window.removeEventListener('message', handleMsg);
+  });
   
   const handleClick = () => {
     iframe.contentWindow.postMessage(JSON.stringify({
