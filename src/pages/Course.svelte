@@ -2,7 +2,6 @@
   import { onMount } from 'svelte';
   import { get } from 'lodash';
   import { Link } from "svelte-navigator";
-  import uniqid from 'uniqid';
 
   import md from '../lib/markdown.js';
   import monaco, { option } from '../lib/monaco.js';
@@ -17,13 +16,11 @@
   let string = '';
   let ut = '';
 
-  onMount(async () => {    
+  onMount(async () => {
     const { js, readme, ut: unitTest } = await get(map, id.split('_').join('.'))();
     const { content } = await db.practices.get({
       id
     }) || {};
-    
-    // console.log();
     
     string = md.render(readme);
     ut = unitTest;
@@ -34,14 +31,40 @@
     
     window.editor.getModel().onDidChangeContent(async () => {
       if (content) {
-        db.practices.put({
+        await db.practices.put({
           id,
-          content: window.editor.getValue()
+          content: window.editor.getValue(),
+          status: 2
         });
       } else {
-        db.practices.add({
+        await db.practices.add({
           id,
-          content: window.editor.getValue()
+          content: window.editor.getValue(),
+          status: 2
+        });
+      }
+    });
+    
+    window.addEventListener('message', async (e) => {
+      if (content) {
+        if (e.data === 'success') {
+          await db.practices.put({
+            id,
+            content: window.editor.getValue(),
+            status: 0
+          });
+        } else {
+          await db.practices.put({
+            id,
+            content: window.editor.getValue(),
+            status: 1
+          });
+        }
+      } else {
+        await db.practices.add({
+          id,
+          content: window.editor.getValue(),
+          status: 2
         });
       }
     });

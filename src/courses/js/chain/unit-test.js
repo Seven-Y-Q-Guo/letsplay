@@ -1,6 +1,3 @@
-mocha.setup('bdd');
-mocha.checkLeaks();
-
 it('chain function should work', () => {
   function add(x) {
     return x + 10;	
@@ -11,5 +8,3 @@ it('chain function should work', () => {
   }
   chai.assert.equal(chain(2, [add, mult]), 360);
 });
-
-mocha.run();

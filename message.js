@@ -1,4 +1,3 @@
-// window.parent.postMessage('update', '*');
 window.addEventListener('message', function (e) {
   const { js, ut } = JSON.parse(e.data);
 
@@ -83,7 +82,16 @@ window.addEventListener('message', function (e) {
         <script src="https://unpkg.com/mocha/mocha.js"></script>
         <script type="text/javascript">${js}</script>
         <script type="text/javascript">
+          mocha.setup('bdd');
+          mocha.checkLeaks();
           ${ut}
+          mocha.run((result) => {
+            if (result === 0) {
+              window.top.postMessage('success', '*');
+            } else {
+              window.top.postMessage('error', '*');
+            }
+          });
         </script>
         <script type="text/javascript" src="./message.js"></script>
       </body>
