@@ -18,7 +18,8 @@ const courses = {
       }
     },
     'Algorithm': {
-      'chain': async () => await import('../courses/js/chain')
+      'chain': async () => await import('../courses/js/chain'),
+      'last three': async () => await import('../courses/js/interview/last-three')
     }
   }
 };
